@@ -5,4 +5,4 @@
 
 Очистить таблицу в clickhouse (поменять tmp на db_name.table_name)
 
-`table=tmp; create=`clickhouse-client --query="SHOW CREATE TABLE $table" | tr -d '\\'`; clickhouse-client --query="DROP TABLE $table"; clickhouse-client --query="$create"`
+`table=tmp; create=\`clickhouse-client --query="SHOW CREATE TABLE $table" | tr -d '\\'\`; clickhouse-client --query="DROP TABLE $table"; clickhouse-client --query="$create"`
