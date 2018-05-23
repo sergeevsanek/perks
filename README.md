@@ -8,3 +8,12 @@
 ```
 table=tmp; create=`clickhouse-client --query="SHOW CREATE TABLE $table" | tr -d '\\'`; clickhouse-client --query="DROP TABLE $table"; clickhouse-client --query="$create"
 ```
+
+Показать реальные размеры таблиц
+```
+SELECT table, round(sum(bytes) / 1024/1024/1024, 2) as size_gb
+FROM system.parts
+WHERE active
+GROUP BY table
+ORDER BY size_gb DESC
+```
